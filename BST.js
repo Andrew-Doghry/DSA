@@ -67,4 +67,58 @@ exports.bst = class BST{
             temp = temp.right;
         }
     }
+    BFS(){
+        let queue = [],result = [];
+        queue.push(this.root);
+        while(queue.length){
+            let currentNode = queue.shift();
+            result.push(currentNode.value);
+            if(currentNode.left)queue.push(currentNode.left);
+            if(currentNode.right)queue.push(currentNode.right);
+        }
+        return result;
+    }
+    dfsPreOrder(){
+        let result = [];
+        function preorder(currentNode){
+          result.push(currentNode.value);
+          if(currentNode.left) preorder(currentNode.left);
+          if(currentNode.right) preorder(currentNode.right);  
+        }
+        preorder(this.root)
+        return result;
+    }
+    dfsPostOrder(){
+        let result = [];
+        function postOrder(currentNode){
+            if(currentNode.left) postOrder(currentNode.left);
+            if(currentNode.right) postOrder(currentNode.right);  
+            result.push(currentNode.value);
+        }
+        postOrder(this.root)
+        return result;
+    }
+    dfsInOrder(){
+        let result = [];
+        function inOrder(currentNode){
+            if(currentNode.left) inOrder(currentNode.left);
+            result.push(currentNode.value);
+            if(currentNode.right) inOrder(currentNode.right);  
+        }
+        inOrder(this.root)
+        return result;
+    }
 }
+let bst = new this.bst();
+bst.insert(47);
+bst.insert(21);
+bst.insert(20);
+bst.insert(22);
+bst.insert(50);
+bst.insert(49);
+bst.insert(70);
+console.log(bst.root)
+console.log(bst.BFS())
+console.log(bst.dfsPreOrder())
+console.log(bst.dfsPostOrder())
+console.log(bst.dfsInOrder())
