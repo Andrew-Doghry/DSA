@@ -109,16 +109,4 @@ exports.bst = class BST{
         return result;
     }
 }
-let bst = new this.bst();
-bst.insert(47);
-bst.insert(21);
-bst.insert(20);
-bst.insert(22);
-bst.insert(50);
-bst.insert(49);
-bst.insert(70);
-console.log(bst.root)
-console.log(bst.BFS())
-console.log(bst.dfsPreOrder())
-console.log(bst.dfsPostOrder())
-console.log(bst.dfsInOrder())
+
